@@ -90,7 +90,17 @@ h2, p {
     margin: 5px;
     overflow: auto;
 }
-.prediction-result, .probability, .saved-result {
+.result {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+    font-size: 25px;
+    height: 25px;
+}
+.saved-result {
+    height: 80px;
     margin: 25px 0;
     font-size: 25px;
 }
@@ -102,8 +112,20 @@ h2, p {
 
     border: 1px dashed gray;
     border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: column;
+}
+.saved-result {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: column;
 }
 .info {
+    text-align: center;
     width: 350px;
     margin: 10px 0;
     /* overflow: hidden;
