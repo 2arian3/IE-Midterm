@@ -22,6 +22,7 @@ h2, p {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
 }
 .main-container {
@@ -29,13 +30,13 @@ h2, p {
     height: 40vh;
     overflow: auto;
     
-    border-color: rgba(0, 0, 0, 0.5);
     border-width: 1px;
+    border-color: transparent;
     border-style: solid;
     border-radius: 45px;
 
     padding: 40px;
-    background-color: rgb(255, 255, 255, 0.8);
+    background-color: rgb(255, 255, 255, 0.9);
 
     display: flex;
     justify-content: space-around;
@@ -56,6 +57,22 @@ h2, p {
     border: 0.5px solid gray;
     border-radius: 5px;
     font-size: 25px;
+}
+input[type="radio"] {
+    display: grid;
+    place-content: center;
+}
+input[type="radio"]::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em black;
+}
+  input[type="radio"]:checked::before {
+    transform: scale(1);
 }
 .form-container {
     width: 45%;
@@ -132,6 +149,14 @@ h2, p {
     text-overflow: ellipsis;
     white-space: nowrap; */
 }
+.modal-message {
+    font-size: 20px;
+    width: 50vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
 .customized-button {
     font-family: Halvetica;
     cursor: pointer;
@@ -162,36 +187,18 @@ h2, p {
     color: white;
 }
 .modal-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.65);
-    inset: 0;
-    position: fixed;
-}
-.modal-message {
-    width: 50vh;
-    height: 15vh;
+    text-align: center;
     font-size: 35px;
-
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-    
-    border-radius: 45px;
-    padding: 40px;
-    background-color:white;
+    width: 50vh;
+    height: 3vh;
+    padding: 10px 40px;
+    border-radius: 55px;
+    margin: 10px 0;
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    background-color: rgb(255, 255, 255, 0.9);
 }
-
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }

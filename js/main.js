@@ -1,9 +1,12 @@
 const URL = 'https://api.genderize.io/';
 
+// Fetching data based on input name.
+// Error are also handled in catch.
 const handleRequest = (name) => {
     fetch(URL + `?name=${name}`)
     .then(response => response.json())
     .then(function(response){
+        document.getElementById('modal').style.opacity = 0;
         document.getElementById('gender').innerHTML = response.gender;
         document.getElementById('probability').innerHTML = response.probability;
         response.gender === 'male' ? 
@@ -11,6 +14,7 @@ const handleRequest = (name) => {
         response.gender === 'female' ? document.getElementById('female').checked = true : '';
 
         const names = getNamesObject();
+        // Checks if name exists in localstorage
         if (names.hasOwnProperty(name)) {
             document.getElementById('saved').innerHTML = names[name];
         } else {
@@ -19,34 +23,42 @@ const handleRequest = (name) => {
     })
     .catch(error => {
         showMessageInModal(
-            `<div style="color: red">ERROR</div>
-             <p class="info">${error}</p>`,
+            `<p class="modal-message" style="padding: 0; margin: 0; color: red">${error}</p>`,
              2000);
     });
 }
 
+// Showing input message in custom modal.
 function showMessageInModal(message, duration) {
-    document.getElementById('modal').style.visibility = 'visible';
-    document.getElementById('modal-message').innerHTML = message;
+    const modal = document.getElementById('modal');
+    modal.style.opacity = 1;
+    modal.innerHTML = message;
     setTimeout(() => {
-        document.getElementById('modal').style.visibility = 'hidden';
+        modal.style.opacity = 0;
     }, duration);
 }
 
+// Getting names from localstorage as a json and converting it into object.
 function getNamesObject() {
     return localStorage.getItem('names') ? JSON.parse(localStorage.getItem('names')) : {};
 }
 
+// Storing names as a string in localstorage.
 function setNamesObject(names) {
     localStorage.setItem('names', JSON.stringify(names));
 }
 
+// Handling form submission.
 function OnSubmit(e) {
     e.preventDefault();
+    const modal = document.getElementById('modal');
     const name = document.getElementById('name').value;
+    modal.style.opacity = 1;
+    modal.innerHTML = `<p class="modal-message" style="padding: 0; margin: 0;">FETCHING...</p>`;
     name ? handleRequest(name) : undefined;
 }
 
+// Handling save result.
 function OnSave(e) {
     const name = document.getElementById('name').value;
     if (name !== '') {
@@ -54,27 +66,28 @@ function OnSave(e) {
         if (document.getElementById('male').checked) {
             names[name] = 'male';
             showMessageInModal(
-                `<p class="info">Updated saved data for <p style="color: teal">${name}</p> successfully</p>`,
+                `<p class="modal-message" style="padding: 0; margin: 0">Updated local storage</p>`,
                  2000);
         } else if (document.getElementById('female').checked) {
             names[name] = 'female';
             showMessageInModal(
-                `<p class="info">Updated saved data for <p style="color: teal">${name}</p> successfully</p>`,
+                `<p class="modal-message" style="padding: 0; margin: 0">Updated local storage</p>`,
                  2000);
         }
         setNamesObject(names);
     }
 }
 
+// Deleting shown name from localstorage.
 function OnClear(e) {
-    const name = document.getElementById('name').value;
+    const name = document.getElementById('saved').value;
     const names = getNamesObject();
     if (name !== '' && names.hasOwnProperty(name)) {
         delete names[name];
         setNamesObject(names);
         document.getElementById('saved').innerHTML = '';
         showMessageInModal(
-            `<p class="info">Successfully deleted <p style="color: teal">${name}</p> entry from storage</p>`,
+            `<p class="modal-message" style="padding: 0; margin: 0">Deleted ${name} from local storage`,
              2000);
     }
 }
