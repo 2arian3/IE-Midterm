@@ -18,12 +18,19 @@ const handleRequest = (name) => {
         }
     })
     .catch(error => {
-        document.getElementById('error-message').style.visibility = 'visible';
-        document.getElementById('error').innerHTML = error;
-        setTimeout(() => {
-            document.getElementById('error-message').style.visibility = 'hidden';
-        }, 2000);
+        showMessageInModal(
+            `<div style="color: red">ERROR</div>
+             <p class="info">${error}</p>`,
+             2000);
     });
+}
+
+function showMessageInModal(message, duration) {
+    document.getElementById('modal').style.visibility = 'visible';
+    document.getElementById('modal-message').innerHTML = message;
+    setTimeout(() => {
+        document.getElementById('modal').style.visibility = 'hidden';
+    }, duration);
 }
 
 function getNamesObject() {
@@ -46,8 +53,14 @@ function OnSave(e) {
         const names = getNamesObject();
         if (document.getElementById('male').checked) {
             names[name] = 'male';
+            showMessageInModal(
+                `<p class="info">Updated saved data for <p style="color: teal">${name}</p> successfully</p>`,
+                 2000);
         } else if (document.getElementById('female').checked) {
             names[name] = 'female';
+            showMessageInModal(
+                `<p class="info">Updated saved data for <p style="color: teal">${name}</p> successfully</p>`,
+                 2000);
         }
         setNamesObject(names);
     }
@@ -60,5 +73,8 @@ function OnClear(e) {
         delete names[name];
         setNamesObject(names);
         document.getElementById('saved').innerHTML = '';
+        showMessageInModal(
+            `<p class="info">Successfully deleted <p style="color: teal">${name}</p> entry from storage</p>`,
+             2000);
     }
 }

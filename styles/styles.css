@@ -161,7 +161,7 @@ h2, p {
     font-size: 20px;
     color: white;
 }
-.error-message-container {
+.modal-container {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -172,7 +172,7 @@ h2, p {
     inset: 0;
     position: fixed;
 }
-.error-message {
+.modal-message {
     width: 50vh;
     height: 15vh;
     font-size: 35px;
