@@ -4,6 +4,7 @@
         <title>Guessing Name Gender</title>
 
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
+        <script src="js/main.js"></script>
 
         <meta charset="UTF-8">
     </head>
@@ -13,11 +14,11 @@
             <div class="main-container">
                 <div class="form-container">
                     <h2 class="header-text">Mr. or Ms. ?</h2>
-                    <form>
+                    <form name="find-gender" onsubmit="OnSubmit(event)">
                         <div class="name-container">
                             <label for="name">Name: </label>
                             <input id="name" class="text-input" 
-                                   name="name" maxlength="255" required
+                                   maxlength="255" required
                                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"/>
                         </div>
                         <div class="gender-selection">
@@ -31,7 +32,8 @@
                                 <label for="Female">Female</label>
                             </div>
                         </div>
-                        <button type="submit">Submit</button>
+                        <button class="customized-button" type="submit">Submit</button>
+                        <button class="customized-button" type="button" onclick="OnSave(event)">Save</button>
                     </form>
                 </div>
                 <div class="result-container">
