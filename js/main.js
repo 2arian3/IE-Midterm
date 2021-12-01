@@ -18,7 +18,7 @@ const handleRequest = (name) => {
         if (names.hasOwnProperty(name)) {
             document.getElementById('saved').innerHTML = names[name];
         } else {
-            document.getElementById('saved').innerHTML = '';
+            document.getElementById('saved').innerHTML = 'There is no saved data';
         }
     })
     .catch(error => {
@@ -68,11 +68,13 @@ function OnSave(e) {
             showMessageInModal(
                 `<p class="modal-message" style="padding: 0; margin: 0">Updated local storage</p>`,
                  2000);
+            document.getElementById('saved').innerHTML = 'male';
         } else if (document.getElementById('female').checked) {
             names[name] = 'female';
             showMessageInModal(
                 `<p class="modal-message" style="padding: 0; margin: 0">Updated local storage</p>`,
                  2000);
+            document.getElementById('saved').innerHTML = 'female';
         }
         setNamesObject(names);
     }
@@ -85,7 +87,7 @@ function OnClear(e) {
     if (name !== '' && names.hasOwnProperty(name)) {
         delete names[name];
         setNamesObject(names);
-        document.getElementById('saved').innerHTML = '';
+        document.getElementById('saved').innerHTML = 'There is no saved data';
         showMessageInModal(
             `<p class="modal-message" style="padding: 0; margin: 0">Deleted ${name} from local storage`,
              2000);

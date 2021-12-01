@@ -14,9 +14,15 @@ html, body {
 body {
     font-family: Halvetica, sans-serif;
     background-image: url('../assets/images/main-bg.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 h2, p {
     margin: 0;
+}
+h2 {
+    color: #040075;
+    text-shadow: 0 0 2px #040075;
 }
 .main-wrapper {
     display: flex;
@@ -46,6 +52,8 @@ h2, p {
     animation-name: fadeIn;
     animation-duration: 1.5s;
     animation-iteration-count: 1;
+
+    box-shadow: 0 0  55px red;
 }
 .header-text {
     font-family: HalveticaBold, sans-serif;
@@ -59,6 +67,7 @@ h2, p {
     font-size: 25px;
 }
 input[type="radio"] {
+    margin: 0 15px;
     display: grid;
     place-content: center;
 }
@@ -145,9 +154,6 @@ input[type="radio"]::before {
     text-align: center;
     width: 350px;
     margin: 10px 0;
-    /* overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; */
 }
 .modal-message {
     font-size: 20px;
@@ -160,10 +166,11 @@ input[type="radio"]::before {
 .customized-button {
     font-family: Halvetica;
     cursor: pointer;
-    width: 90px;
+    width: 100px;
     height: 45px;
     font-size: 25px;
     border-radius: 5px;
+    margin: 10px;
     border: 1px solid;
     border-color: transparent;
     background-color: gray;
@@ -179,14 +186,18 @@ input[type="radio"]::before {
     align-items: center;
     justify-content: center;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
     bottom: 0;
     width: 100%;
     height: 35px;
     font-size: 20px;
-    color: white;
+    color: black;
 }
 .modal-container {
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     font-size: 35px;
     width: 50vh;
