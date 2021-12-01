@@ -17,3 +17,6 @@ function OnSubmit(e) {
 
 function OnSave(e) {
 }
+
+function OnClear(e) {
+}

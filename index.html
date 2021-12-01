@@ -10,6 +10,13 @@
     </head>
 
     <body>
+        <section class="error-message-container">
+            <div class="error-message">
+                <p style="color: red;">ERROR</p>
+                <p class="info" id="error"></p>
+                <button class="customized-button" type="button" style="background-color:teal;">Got It</button>
+            </div>
+        </section>
         <section class="main-wrapper">
             <div class="main-container">
                 <div class="form-container">
@@ -39,12 +46,29 @@
                 <div class="result-container">
                     <div class="prediction-container">
                         <h2 class="header-text">Prediction</h2>
+                        <div class="prediction-result">
+                            Gender:
+                            <p class="info" id="gender"></p>
+                        </div>
+                        <div class="probability">
+                            Probability:
+                            <p class="info" id="probability"></p>
+                        </div>
                     </div>
                     <div class="saved-result-container">
                         <h2 class="header-text">Saved Answer</h2>
+                        <div class="saved-result">
+                            <p class="info" id="saved"></p>
+                            <button class="customized-button" type="button" onclick="OnClear(event)">Clear</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+        <footer>
+            <div class="footer">
+                Developed By &nbsp;<a href="https://2arian3.github.io/" target="_blank" style="text-decoration: none;">Arian</a>&nbsp; &copy 2021
+            </div>
+        </footer>
     </body>
 </html>
