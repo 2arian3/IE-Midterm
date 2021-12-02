@@ -1,3 +1,4 @@
+/* Defining two different fonts for texts. */
 @font-face {
     font-family: Halvetica;
     src: url('../assets/fonts/Helvetica\ LT\ 35\ Thin.ttf');
@@ -6,17 +7,20 @@
     font-family: HalveticaBold;
     src: url('../assets/fonts/HelveticaRounded-Bold.otf');
 }
+/* Ignoring default margin value for html and body. */
 html, body {
     margin: 0;
     height: 100%;
     width: 100%;
 }
+/* Configuring background image and setting the default font for project */
 body {
     font-family: Halvetica, sans-serif;
     background-image: url('../assets/images/main-bg.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+/* Ignoring default margin value for h2 and p tags for better controlling */
 h2, p {
     margin: 0;
 }
@@ -24,6 +28,10 @@ h2 {
     color: #040075;
     text-shadow: 0 0 2px #040075;
 }
+/* The following code is used for centering child elements using flex
+display: flex;
+align-items: center;
+justify-content: center; */
 .main-wrapper {
     display: flex;
     align-items: center;
@@ -34,9 +42,11 @@ h2 {
 .main-container {
     width: 600px;
     height: 400px;
+    /* Handling overflow using auto option */
     overflow: auto;
     
     border-width: 1px;
+    /* Removing border color */
     border-color: transparent;
     border-style: solid;
     border-radius: 45px;
@@ -49,6 +59,7 @@ h2 {
     align-items: center;
     flex-direction: row;
 
+    /* Defining fade in animation for when container pops up */
     animation-name: fadeIn;
     animation-duration: 1.5s;
     animation-iteration-count: 1;
@@ -56,6 +67,7 @@ h2 {
     box-shadow: 0 0  55px red;
 }
 .header-text {
+    /* Default font for headers */
     font-family: HalveticaBold, sans-serif;
     font-size: 35px;
     font-weight: 100;
@@ -66,6 +78,7 @@ h2 {
     border-radius: 5px;
     font-size: 25px;
 }
+/* Customizing radio buttons in the following lines. */
 input[type="radio"] {
     margin: 0 15px;
     display: grid;
@@ -80,7 +93,7 @@ input[type="radio"]::before {
     transition: 120ms transform ease-in-out;
     box-shadow: inset 1em 1em black;
 }
-  input[type="radio"]:checked::before {
+input[type="radio"]:checked::before {
     transform: scale(1);
 }
 .form-container {
@@ -141,13 +154,13 @@ input[type="radio"]::before {
 
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     flex-direction: column;
 }
 .saved-result {
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     flex-direction: column;
 }
 .info {
@@ -158,6 +171,7 @@ input[type="radio"]::before {
 .modal-message {
     font-size: 20px;
     width: 600px;
+    /* Handling overflow in texts shown in modal using ... */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -175,9 +189,11 @@ input[type="radio"]::before {
     border-color: transparent;
     background-color: rgb(219,112,147);
     color: white;
+    /* Using transition for better UI when hovered */
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .customized-button:hover {
+    /* Adding box shadow when hovered on a button */
     color: rgba(0, 0, 0, 0.8);
     box-shadow: 0 0 40px 40px rgb(255,182,193) inset;
 }
@@ -185,6 +201,7 @@ input[type="radio"]::before {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Fixing the footer to bottom */
     position: fixed;
     background-color: rgba(255, 255, 255, 0.9);
     bottom: 0;
@@ -194,6 +211,7 @@ input[type="radio"]::before {
     color: black;
 }
 .modal-container {
+    /* Adding z-index for covering the box shadow of main container */
     z-index: 5;
     display: flex;
     justify-content: center;
@@ -206,10 +224,17 @@ input[type="radio"]::before {
     border-radius: 55px;
     margin: 10px 0;
     opacity: 0;
+    /* Adding transition for better UI when modal pops up */
     transition: all 0.5s ease-in;
     background-color: rgb(255, 255, 255, 0.9);
 }
+/* Defining fade-in animation */
 @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
+}
+/* Customizing text selection for better UI */
+::selection {
+    color: black;
+    background-color: pink;
 }

@@ -32,6 +32,7 @@ const handleRequest = (name) => {
 function showMessageInModal(message, duration) {
     const modal = document.getElementById('modal');
     modal.style.opacity = 1;
+    // Changing content of modal.
     modal.innerHTML = message;
     setTimeout(() => {
         modal.style.opacity = 0;
@@ -50,6 +51,7 @@ function setNamesObject(names) {
 
 // Handling form submission.
 function OnSubmit(e) {
+    // Preventing submit button from default action.
     e.preventDefault();
     const modal = document.getElementById('modal');
     const name = document.getElementById('name').value;
@@ -84,6 +86,7 @@ function OnSave(e) {
 function OnClear(e) {
     const name = document.getElementById('name').value;
     const names = getNamesObject();
+    // Checking wheter input name is already stored or not.
     if (name !== '' && names.hasOwnProperty(name)) {
         delete names[name];
         setNamesObject(names);
