@@ -82,7 +82,7 @@ function OnSave(e) {
 
 // Deleting shown name from localstorage.
 function OnClear(e) {
-    const name = document.getElementById('saved').value;
+    const name = document.getElementById('name').value;
     const names = getNamesObject();
     if (name !== '' && names.hasOwnProperty(name)) {
         delete names[name];

@@ -173,13 +173,13 @@ input[type="radio"]::before {
     margin: 10px;
     border: 1px solid;
     border-color: transparent;
-    background-color: gray;
+    background-color: rgb(219,112,147);
     color: white;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .customized-button:hover {
-    color: black;
-    box-shadow: 0 0 40px 40px floralwhite inset;
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 40px 40px rgb(255,182,193) inset;
 }
 .footer {
     display: flex;
