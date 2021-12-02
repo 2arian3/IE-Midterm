@@ -32,8 +32,8 @@ h2 {
     height: 100vh;
 }
 .main-container {
-    width: 50vh;
-    height: 40vh;
+    width: 600px;
+    height: 400px;
     overflow: auto;
     
     border-width: 1px;
@@ -157,7 +157,7 @@ input[type="radio"]::before {
 }
 .modal-message {
     font-size: 20px;
-    width: 50vh;
+    width: 600px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -200,8 +200,8 @@ input[type="radio"]::before {
     align-items: center;
     text-align: center;
     font-size: 35px;
-    width: 50vh;
-    height: 3vh;
+    width: 600px;
+    height: 30px;
     padding: 10px 40px;
     border-radius: 55px;
     margin: 10px 0;
