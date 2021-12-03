@@ -1,7 +1,7 @@
 const URL = 'https://api.genderize.io/';
 
 // Fetching data based on input name.
-// Error are also handled in catch.
+// Errors are also handled in catch.
 const handleRequest = (name) => {
     fetch(URL + `?name=${name}`)
     .then(response => response.json())
@@ -17,8 +17,13 @@ const handleRequest = (name) => {
         // Checks if name exists in localstorage
         if (names.hasOwnProperty(name)) {
             document.getElementById('saved').innerHTML = names[name];
+            document.getElementById('saved-result-container').style.opacity = 1;
         } else {
+            // Hiding saved data container if no saved data exist.
             document.getElementById('saved').innerHTML = 'There is no saved data';
+            setTimeout(() => {
+                document.getElementById('saved-result-container').style.opacity = 0;
+            }, 500);
         }
     })
     .catch(error => {
@@ -71,12 +76,14 @@ function OnSave(e) {
                 `<p class="modal-message" style="padding: 0; margin: 0">Updated local storage</p>`,
                  2000);
             document.getElementById('saved').innerHTML = 'male';
+            document.getElementById('saved-result-container').style.opacity = 1;
         } else if (document.getElementById('female').checked) {
             names[name] = 'female';
             showMessageInModal(
                 `<p class="modal-message" style="padding: 0; margin: 0">Updated local storage</p>`,
                  2000);
             document.getElementById('saved').innerHTML = 'female';
+            document.getElementById('saved-result-container').style.opacity = 1;
         }
         setNamesObject(names);
     }
@@ -91,6 +98,10 @@ function OnClear(e) {
         delete names[name];
         setNamesObject(names);
         document.getElementById('saved').innerHTML = 'There is no saved data';
+        // Hiding saved data container.
+        setTimeout(() => {
+            document.getElementById('saved-result-container').style.opacity = 0;
+        }, 500);
         showMessageInModal(
             `<p class="modal-message" style="padding: 0; margin: 0">Deleted ${name} from local storage`,
              2000);

@@ -156,6 +156,11 @@ input[type="radio"]:checked::before {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+
+    /* Switching opacity to 1 when there is saved data using JS  */
+    opacity: 0;
+
+    transition: opacity 300ms ease-in;
 }
 .saved-result {
     display: flex;
